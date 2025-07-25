@@ -472,6 +472,58 @@
             70% { transform: scale(1); }
         }
         
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .pagination-controls button {
+            padding: 8px 16px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination-controls button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .pagination-controls button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        #page-info {
+            font-weight: bold;
+            color: #5a3e36;
+        }
+        
+        .wednesday-warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            border: 1px solid #ffeeba;
+        }
+        
+        .wednesday-warning i {
+            color: #ffc107;
+            font-size: 1.3rem;
+        }
+        
         @media (max-width: 768px) {
             .content {
                 flex-direction: column;
@@ -511,7 +563,7 @@
             <div class="menu-section">
                 <h2 class="section-title"><i class="fas fa-utensils"></i> 家常美味</h2>
                 
-                <div class="menu-grid">
+                <div class="menu-grid" id="menu-grid">
                     <!-- 菜品1 -->
                     <div class="menu-item">
                         <div class="free-label">免费</div>
@@ -711,6 +763,81 @@
                             </div>
                         </div>
                     </div>
+                     <!-- 菜品15 -->
+                    <div class="menu-item">
+                        <div class="free-label">免费</div>
+                        <div class="item-image" style="background-image: url('https://ts4.tc.mm.bing.net/th/id/OIP-C.K6eG_n5OwK8ugAcvoQAe1gHaDd?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                        <div class="item-content">
+                            <h3 class="item-title">西芹炒肉</h3>
+                            <div class="item-footer">
+                                <div class="item-price free-price">¥0</div>
+                                    <button class="add-to-cart" data-id="15" data-name="西芹炒肉" data-price="0">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 菜品16 -->
+                    <div class="menu-item">
+                        <div class="free-label">免费</div>
+                        <div class="item-image" style="background-image: url('https://ts2.tc.mm.bing.net/th/id/OIP-C.WSKkseGhPgyusqusrNy1UwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                        <div class="item-content">
+                            <h3 class="item-title">卤鸡爪</h3>
+                            <div class="item-footer">
+                                <div class="item-price free-price">¥0</div>
+                                    <button class="add-to-cart" data-id="16" data-name="卤鸡爪" data-price="0">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 菜品17 -->
+                    <div class="menu-item">
+                        <div class="free-label">免费</div>
+                        <div class="item-image" style="background-image: url('https://s4.cdn.jiaonizuocai.com/caipu/201511/1812/221006594318.jpg/NjAwX2MyXzQwMA');"></div>
+                        <div class="item-content">
+                            <h3 class="item-title">荷兰豆炒肉</h3>
+                            <div class="item-footer">
+                                <div class="item-price free-price">¥0</div>
+                                    <button class="add-to-cart" data-id="17" data-name="荷兰豆炒肉" data-price="0">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 菜品18 -->
+                    <div class="menu-item">
+                        <div class="free-label">免费</div>
+                        <div class="item-image" style="background-image: url('https://n.sinaimg.cn/sinakd20220524ac/742/w1440h902/20220524/1534-f09bc034713cbbdf5525691b83e55e28.jpg');"></div>
+                        <div class="item-content">
+                            <h3 class="item-title">水煮肉片</h3>
+                            <div class="item-footer">
+                                <div class="item-price free-price">¥0</div>
+                                    <button class="add-to-cart" data-id="18" data-name="水煮肉片" data-price="0">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 菜品19 -->
+                    <div class="menu-item">
+                        <div class="free-label">免费</div>
+                        <div class="item-image" style="background-image: url('https://pic.nximg.cn/file/20230331/33857552_193519175105_2.jpg');"></div>
+                        <div class="item-content">
+                            <h3 class="item-title">鱼香肉丝</h3>
+                            <div class="item-footer">
+                                <div class="item-price free-price">¥0</div>
+                                    <button class="add-to-cart" data-id="19" data-name="鱼香肉丝" data-price="0">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination-controls">
+                    <button id="prev-page">上一页</button>
+                    <span id="page-info">1 / 2</span>
+                    <button id="next-page">下一页</button>
                 </div>
             </div>
             
@@ -730,6 +857,13 @@
                 <button class="checkout-btn" id="checkout-btn">
                     <i class="fas fa-paper-plane"></i> 下单给登
                 </button>
+                <button class="checkout-btn" id="order-history-btn" style="margin-top: 10px; background: #6b8cff;">
+                    <i class="fas fa-history"></i> 查看订单历史
+                </button>
+                <div id="order-history" style="margin-top: 20px; display: none;">
+                    <h3 class="section-title"><i class="fas fa-history"></i> 订单历史</h3>
+                    <div id="order-history-items"></div>
+                </div>
             </div>
         </div>
         
@@ -771,6 +905,80 @@
         // 购物车数据
         let cart = [];
         
+        // 检查是否为周三
+        function isWednesday() {
+            const today = new Date();
+            return today.getDay() === 3; // 0是周日，3是周三
+        }
+        
+        // 禁用点餐功能
+        function disableOrdering() {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.disabled = true;
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
+            
+            document.getElementById('checkout-btn').disabled = true;
+            document.getElementById('checkout-btn').style.opacity = '0.5';
+            document.getElementById('checkout-btn').style.cursor = 'not-allowed';
+            
+            // 添加提示信息
+            const menuSection = document.querySelector('.menu-section');
+            const warning = document.createElement('div');
+            warning.className = 'wednesday-warning';
+            warning.innerHTML = '<i class="fas fa-exclamation-circle"></i> 周三是休息日，今天无法点餐哦~';
+            menuSection.insertBefore(warning, menuSection.firstChild);
+        }
+        
+        // 初始化时检查是否为周三
+        if (isWednesday()) {
+            disableOrdering();
+        }
+        
+        // 分页数据
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        const menuItems = document.querySelectorAll('.menu-item');
+        const totalPages = Math.ceil(menuItems.length / itemsPerPage);
+        
+        // 更新分页显示
+        function updatePagination() {
+            const pageInfo = document.getElementById('page-info');
+            pageInfo.textContent = `${currentPage} / ${totalPages}`;
+            
+            // 显示当前页的菜品
+            menuItems.forEach((item, index) => {
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                
+                if (index >= startIndex && index < endIndex) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // 上一页按钮事件
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePagination();
+            }
+        });
+        
+        // 下一页按钮事件
+        document.getElementById('next-page').addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePagination();
+            }
+        });
+        
+        // 初始化分页
+        updatePagination();
+        
         // 添加菜品到购物车
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', () => {
@@ -805,6 +1013,44 @@
             });
         });
         
+        // 存储订单历史
+        let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
+        // 显示订单历史
+        function showOrderHistory() {
+            const orderHistoryContainer = document.getElementById('order-history-items');
+            orderHistoryContainer.innerHTML = '';
+
+            if (orderHistory.length === 0) {
+                orderHistoryContainer.innerHTML = '<p>暂无订单历史记录</p>';
+                return;
+            }
+
+            orderHistory.slice(0, 7).forEach((order, index) => {
+                const orderElement = document.createElement('div');
+                orderElement.style.marginBottom = '15px';
+                orderElement.style.padding = '10px';
+                orderElement.style.backgroundColor = '#f8f8f8';
+                orderElement.style.borderRadius = '10px';
+                orderElement.innerHTML = `
+                    <p><strong>时间：</strong>${order.time}</p>
+                    <p><strong>菜品：</strong>${order.items.map(item => `${item.name} x${item.quantity}`).join(', ')}</p>
+                `;
+                orderHistoryContainer.appendChild(orderElement);
+            });
+        }
+
+        // 显示/隐藏订单历史
+        document.getElementById('order-history-btn').addEventListener('click', () => {
+            const orderHistoryElement = document.getElementById('order-history');
+            if (orderHistoryElement.style.display === 'none') {
+                orderHistoryElement.style.display = 'block';
+                showOrderHistory();
+            } else {
+                orderHistoryElement.style.display = 'none';
+            }
+        });
+
         // 更新购物车显示
         function updateCartDisplay() {
             const cartItemsContainer = document.getElementById('cart-items');
@@ -892,6 +1138,17 @@
             orderSummary += `\n留言: ${message}\n`;
             orderSummary += `\n下单人: ${userName}\n电话: ${userPhone}\n`;
             orderSummary += '\n订单已收到，晚上等着吃吧';
+            
+            // 保存订单到历史记录
+            const order = {
+                items: [...cart],
+                userName,
+                userPhone,
+                message,
+                time: new Date().toLocaleString()
+            };
+            orderHistory.unshift(order);
+            localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
             
             // 显示弹窗
             document.getElementById('order-summary').textContent = orderSummary;
