@@ -566,7 +566,7 @@
                 <div class="menu-grid" id="menu-grid">
                     <!-- 菜品1 -->
                     <div class="menu-item">
-                        <div class="free-label">免费</div>
+                        <!-- <div class="free-label">免费</div>
                         <div class="item-image" style="background-image: url('https://materials.cdn.bcebos.com/images/19250972/d1ae0cc3172937554dc085b8950afe11.jpeg');"></div>
                         <div class="item-content">
                             <h3 class="item-title">番茄炒蛋</h3>
@@ -576,7 +576,7 @@
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     
                     <!-- 菜品2 -->
@@ -870,13 +870,6 @@
         <div class="special-request">
             <h2 class="section-title"><i class="fas fa-comment-alt"></i> 给亲爱的留言</h2>
             <textarea id="special-request" placeholder="写下你想对她说的话，或者特殊要求...例如：少放辣椒，多放爱❤️"></textarea>
-            
-            <h2 class="section-title" style="margin-top: 25px;"><i class="fas fa-user"></i> 你的信息</h2>
-            <div class="user-info">
-                <input type="text" id="user-name" placeholder="你的名字">
-                <input type="text" id="user-phone" placeholder="你的电话">
-            </div>
-            
             <h2 class="section-title" style="margin-top: 25px;"><i class="fas fa-bell"></i> 接收方式</h2>
             <div class="notification-options">
                 <label class="notification-option">
@@ -1122,9 +1115,6 @@
                 alert('请先选择一些菜品哦~');
                 return;
             }
-            
-            const userName = document.getElementById('user-name').value;
-            const userPhone = document.getElementById('user-phone').value;
             const message = document.getElementById('special-request').value || '没有留言，但满满都是爱❤️';
             
             // 移除姓名和电话的非空检查
@@ -1136,14 +1126,11 @@
             });
             
             orderSummary += `\n留言: ${message}\n`;
-            orderSummary += `\n下单人: ${userName}\n电话: ${userPhone}\n`;
             orderSummary += '\n订单已收到，晚上等着吃吧';
             
             // 保存订单到历史记录
             const order = {
                 items: [...cart],
-                userName,
-                userPhone,
                 message,
                 time: new Date().toLocaleString()
             };
@@ -1158,7 +1145,7 @@
             const notificationType = document.querySelector('input[name="notification"]:checked').value;
             
             // 发送通知（在实际应用中，这里应该调用后端API）
-            sendOrderNotification(userName, userPhone, orderSummary, notificationType);
+            sendOrderNotification( orderSummary, notificationType);
             
             // 重置购物车
             cart = [];
@@ -1172,54 +1159,13 @@
         });
         
         // 发送订单通知（模拟实现）
-        function sendOrderNotification(userName, userPhone, orderSummary, type) {
-            console.log(`发送订单通知给 ${userName} (${userPhone})`);
+        function sendOrderNotification(orderSummary, type) {
             console.log(`通知类型: ${type}`);
             console.log(`订单内容: ${orderSummary}`);
             
-            // 在实际应用中，这里应该调用后端API
-            // 以下是几种实现方式的示例：
-            
-            // 1. 使用EmailJS发送邮件
-            /*
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-                to_name: "你的名字",
-                from_name: userName,
-                message: orderSummary,
-                reply_to: userPhone
-            }).then(
-                function(response) {
-                    console.log("邮件发送成功", response.status, response.text);
-                },
-                function(error) {
-                    console.log("邮件发送失败", error);
-                }
-            );
-            */
-            
-            // 2. 使用Twilio发送短信
-            /*
-            fetch('https://api.twilio.com/2010-04-01/Accounts/YOUR_ACCOUNT_SID/Messages.json', {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Basic ' + btoa('YOUR_ACCOUNT_SID:YOUR_AUTH_TOKEN'),
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    To: userPhone,
-                    From: 'YOUR_TWILIO_NUMBER',
-                    Body: `新订单：${orderSummary}`
-                })
-            })
-            .then(response => response.json())
-            .then(data => console.log('短信已发送', data))
-            .catch(error => console.error('短信发送失败', error));
-            */
-            
-            // 3. 使用Formspree提交表单
+            // 使用Formspree提交表单
             const formData = new FormData();
-            formData.append('name', userName);
-            formData.append('phone', userPhone);
+
             formData.append('order', orderSummary);
             
             fetch('https://formspree.io/f/mkgzjery', {
